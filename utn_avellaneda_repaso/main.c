@@ -4,16 +4,22 @@
 #define TAM 5
 
 /*
-id de producto
-descripcion
-stock
-precio unitario
+SE CARGAN LOS SIGUIENTES DATOS EN UN ABM DE PRODUCTOS:
+1) id de producto
+2) descripcion
+3) stock
+4) precio unitario
 
+1)ALTAS
+2) MOSTRAR PRODUCTOS
+3) MODIFICAR PRODUCTOS
+4) BAJAS
+9) SALIR
 */
 
 int buscarLibre(int [], int);
 float calcularPromedio(int, int);
-void mostrarProductos(int[], char[][50], int[], int[], int); // MATRIZ PASAR LAS CANTIDAD DE COLUMAS
+void mostrarProductos(int[], char[][50], int[], int[], int); // MATRIZ PASAR LAS CANTIDAD DE COLUMNAS
 int cargarProducto(int[], char[][50], int[], int[], int);
 int modificarProducto(int [], int, int);
 int BuscarProducto(int [], int, int);
@@ -26,13 +32,12 @@ id de producto
 descripcion
 stock
 precio unitario
-
 */
 
-    int idProducto[TAM]= {10,11,12};
-    char descripcionProducto[TAM][50] = {"galletitas", "cafe", "yerbamate"};
-    int stockProducto[TAM] = {10,8,9};
-    int precioUnitario[TAM]= {7,6,9};
+    int idProducto[TAM]= {};
+    char descripcionProducto[TAM][50];
+    int stockProducto[TAM];
+    int precioUnitario[TAM];
     /*float promedio[TAM] = {8.5, 7, 9};*/
     int opcion;
     int index;
@@ -53,10 +58,10 @@ precio unitario
             index= cargarProducto(idProducto, descripcionProducto, stockProducto, precioUnitario, TAM);
             if(index == -1)
             {
-            printf("no hay lugar!!!\n");
+            printf("No hay lugar. Debe borrar algun producto para cargar uno nuevo!!!\n");
             }else
             {
-             printf("Se ingreso el Producto\n");
+             printf("Se ingreso correctamente el Producto\n");
             }
 
             break;
@@ -89,26 +94,26 @@ precio unitario
          switch(modificar)
          {
               case 1:
-                //legajo
+                //id
                 printf("Modificar ID  de Producto\n: ");
                 scanf("%d", &idProducto[posicion]);
                 break;
             case 2:
-               //
+               //descripcion
 
                 printf("Modificar descripcion de Producto de\n: ");
                 fflush(stdin);
                 gets(descripcionProducto[posicion]);
                 break;
             case 3:
-                //Nota1
+                //stock
                 printf("Modificar Stock de producto de\n: ");
                 scanf("%d", &stockProducto[posicion]);
                 /*promedio[posicion] = calcularPromedio(stockProducto[posicion], precioUnitario[posicion]);*/
                 break;
 
             case 4:
-                //Nota2
+                //precio
                 printf("Modificar precio Unitario de\n: ");
                 scanf("%d", &precioUnitario[posicion]);
                 /*promedio[posicion] = calcularPromedio(stockProducto[posicion], precioUnitario[posicion]);*/
@@ -120,7 +125,7 @@ precio unitario
 
 
             case 4:
-                //baja
+                //baja lògica
                 //Buscar producto por nro de idProducto
                 printf("Buscar producto por ID");
                 scanf("%d", &dato);
