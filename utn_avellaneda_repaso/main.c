@@ -9,8 +9,7 @@ SE CARGAN LOS SIGUIENTES DATOS EN UN ABM DE PRODUCTOS:
 2) descripcion
 3) stock
 4) precio unitario
-
-1)ALTAS
+1) ALTAS
 2) MOSTRAR PRODUCTOS
 3) MODIFICAR PRODUCTOS
 4) BAJAS
@@ -24,28 +23,19 @@ int cargarProducto(int[], char[][50], int[], int[], int);
 int modificarProducto(int [], int, int);
 int BuscarProducto(int [], int, int);
 
-
 int main()
 {
-    /*
-id de producto
-descripcion
-stock
-precio unitario
-*/
-
     int idProducto[TAM]= {};
     char descripcionProducto[TAM][50];
     int stockProducto[TAM];
     int precioUnitario[TAM];
-    /*float promedio[TAM] = {8.5, 7, 9};*/
+    /*float promedio[TAM] = {};*/
     int opcion;
     int index;
     int modificar;
     int dato;
     int posicion;
     int len;
-
 
     do
     {
@@ -66,7 +56,7 @@ precio unitario
 
             break;
         case 2:
-
+        //muestra productos
         mostrarProductos(idProducto, descripcionProducto, stockProducto, precioUnitario, TAM);
         break;
 
@@ -100,7 +90,6 @@ precio unitario
                 break;
             case 2:
                //descripcion
-
                 printf("Modificar descripcion de Producto de\n: ");
                 fflush(stdin);
                 gets(descripcionProducto[posicion]);
@@ -111,18 +100,14 @@ precio unitario
                 scanf("%d", &stockProducto[posicion]);
                 /*promedio[posicion] = calcularPromedio(stockProducto[posicion], precioUnitario[posicion]);*/
                 break;
-
             case 4:
                 //precio
                 printf("Modificar precio Unitario de\n: ");
                 scanf("%d", &precioUnitario[posicion]);
                 /*promedio[posicion] = calcularPromedio(stockProducto[posicion], precioUnitario[posicion]);*/
                 break;
-
-
          }
            break;
-
 
             case 4:
                 //baja lògica
@@ -143,27 +128,18 @@ precio unitario
                 /*promedio[posicion] = 0;*/
                 break;
         }
-
-
     printf("\n\n");
     system("pause");
     system("cls");
-
     }
     while(opcion!=9);
-
-
-
-
     return 0;
 }
 
 int buscarLibre(int idProducto[], int tamano)
 {
-
     int index = -1;
     int i;
-
 
     for(i=0; i<tamano; i++)
     {
@@ -172,7 +148,6 @@ int buscarLibre(int idProducto[], int tamano)
             index = i;
             break;
         }
-
     }
     return index;
 }
@@ -180,34 +155,25 @@ int buscarLibre(int idProducto[], int tamano)
 
 void mostrarProductos(int idProducto[], char descripcionProducto[][50], int stockProducto[], int precioUnitario[], int tam)
 {
-
-
      for(int i=0; i<tam; i++)
             {
                 if(idProducto[i] != 0)
                 {
                      printf("ID: %d Descripcion: %s Stock: %d Precio: $%d\n", idProducto[i], descripcionProducto[i], stockProducto[i], precioUnitario[i]);
                 }
-
             }
-
-
 }
 
 
 int cargarProducto(int idProducto[], char descripcionProducto[][50], int stockProducto[], int precioUnitario[]/*, float promedio[]*/, int tam)
 {
-
-
            int index;
 
            index = buscarLibre(idProducto, tam);
             if(index !=-1)
             {
-
             printf("Ingrese Id del producto: ");
             scanf("%d", &idProducto[index]);
-
 
             printf("Ingrese Descripcion del producto: ");
             fflush(stdin);
@@ -218,10 +184,8 @@ int cargarProducto(int idProducto[], char descripcionProducto[][50], int stockPr
 
             printf("Ingrese precio Unitario: ");
             scanf("%d", &precioUnitario[index]);
-
             }
             return index;
-
 }
 
 int BuscarProducto(int vector[], int dato, int tam)
@@ -233,11 +197,8 @@ int BuscarProducto(int vector[], int dato, int tam)
             {
                 if(vector[i] == dato)
                 {
-
                    posicion = i;
-
                 }
-
             }
 
             return posicion;
@@ -246,12 +207,10 @@ int BuscarProducto(int vector[], int dato, int tam)
 int modificarProducto(int vector[], int dato, int tam)
 {
      int i;
-
      for(i=0; i<tam; i++)
             {
                 if(vector[i] == dato)
                 {
-
                     printf("Ingresar nuevo dato: ");
                     fflush(stdin);
                     scanf("%d", &vector[i]);
